@@ -1,9 +1,10 @@
 const sgMail = require("@sendgrid/mail");
-const config = require("../config");
+const config = require("../../config");
 
-exports.sendEmail = async (newUser) => {
-
-  const uri = `http://localhost:3000/pages/confirm_register/${newUser.generatedKey}`;
+exports.sendEmail = async newUser => {
+  const uri = `http://localhost:3000/pages/confirm_register/${
+    newUser.generatedKey
+  }`;
 
   sgMail.setApiKey(config.SG_KEY);
   const msg = {
