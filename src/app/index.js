@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 app.use(
   bodyParser.json({
@@ -20,8 +21,17 @@ app.use((req, res, next) => {
   next();
 });
 
-const userRoute = require("../routes/user-route");
+// connect to mongodb
+mongoose.connect("mongodb://localhost:27017/odont_db");
 
-app.use("api/rest/user", userRoute);
+// load schemas
+const userSchema = require("../db/schemas/user-schema");
+
+// load routes
+const userRoute = require("../routes/user-route");
+const pageRoute = require("../routes/pages-route");
+
+app.use("/api/rest/user", userRoute);
+app.use("/pages", pageRoute);
 
 module.exports = app;

@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const controller = require("../controllers/user-controller");
 
-router.post("/", (req, res, next) => {
-  console.log(req.body);
-});
+router.post("/", controller.create);
 
 module.exports = router;

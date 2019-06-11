@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/bin/server.js"
+    "start": "nodemon src/bin/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^6.4.0",
+    "body-parser": "^1.18.3",
     "express": "^4.17.1",
-    "body-parser": "^1.18.3"
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }

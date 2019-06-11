@@ -1,0 +1,1 @@
+module.exports.SG_KEY = "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";
