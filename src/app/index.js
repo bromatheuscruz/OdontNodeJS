@@ -1,8 +1,11 @@
+require("../../config");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const configuration = require("../../config");
+const envJson = require("../../env.json");
+const currentEnv = process.env.NODE_ENV || "development";
+const envConfiguration = envJson[currentEnv];
 
 app.use(
   bodyParser.json({
@@ -23,7 +26,7 @@ app.use((req, res, next) => {
 });
 
 // connect to mongodb
-mongoose.connect("mongodb://localhost:27017/odont_db", {
+mongoose.connect(envConfiguration.mongo_db, {
   useNewUrlParser: true
 });
 

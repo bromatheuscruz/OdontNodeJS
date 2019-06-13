@@ -7,16 +7,20 @@ exports.login = async (req, res, next) => {
     const encryptPassword = encryptService.encrypt(password);
 
     const user = await userRepository.findByCredentials({ email, password: encryptPassword });
-    const token = await jwtService.generateToken(user);
 
     if (user) {
+        const token = await jwtService.generateToken(user);
         res
             .status(200)
             .send({
                 success: true,
                 message: "Successfully logged in",
                 data: {
-                    token
+                    token: `Bearer ${token}`,
+                    user: {
+                        id: user._id,
+                        email: user.email,
+                    }
                 }
             });
     } else {
