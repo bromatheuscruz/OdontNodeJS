@@ -26,9 +26,7 @@ app.use((req, res, next) => {
 });
 
 // connect to mongodb
-mongoose.connect(envConfiguration.mongo_db, {
-  useNewUrlParser: true
-});
+mongoose.connect("mongodb://development:mysecretpassword1@ds237267.mlab.com:37267/odont_db");
 
 // load schemas
 const userSchema = require("../db/schemas/user-schema");
