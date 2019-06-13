@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const configuration = require("../../config");
 
 app.use(
   bodyParser.json({
@@ -22,7 +23,9 @@ app.use((req, res, next) => {
 });
 
 // connect to mongodb
-mongoose.connect("mongodb://localhost:27017/odont_db");
+mongoose.connect("mongodb://localhost:27017/odont_db", {
+  useNewUrlParser: true
+});
 
 // load schemas
 const userSchema = require("../db/schemas/user-schema");
@@ -30,8 +33,10 @@ const userSchema = require("../db/schemas/user-schema");
 // load routes
 const userRoute = require("../routes/user-route");
 const pageRoute = require("../routes/pages-route");
+const authRoute = require("../routes/auth-route");
 
-app.use("/api/rest/user", userRoute);
+app.use("/api/rest", userRoute);
 app.use("/pages", pageRoute);
+app.use("/api/rest", authRoute)
 
 module.exports = app;

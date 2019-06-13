@@ -3,38 +3,22 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const User = new schema({
-    name: {
-        type: String,
-        required: true
-    },
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
-        type: String,
-        required: true
-    },
     email: {
         type: String,
-        unique: true
+        required: true
     },
     password: {
         type: String,
         required: true
     },
-    isActive: {
-        type: Boolean,
-        default: false
-    },
-    age: {
-        type: Number,
-    },
-    generatedKey: {
-        type: String,
-        required: true,
-        unique: true
-    }
+    roles: [
+        {
+            type: String,
+            required: true,
+            enum: ["USER", "ADMIN", "EMPLOYEE"],
+            default: "USER"
+        }
+    ]
 }, {
         timestamps: true
     });
