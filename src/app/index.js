@@ -1,4 +1,4 @@
-const config = require("../../config");
+const config = require("./src/config.js");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
