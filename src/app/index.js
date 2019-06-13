@@ -1,4 +1,4 @@
-require("../../config");
+const config = require("../../config");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -26,7 +26,9 @@ app.use((req, res, next) => {
 });
 
 // connect to mongodb
-mongoose.connect("mongodb://development:mysecretpassword1@ds237267.mlab.com:37267/odont_db");
+mongoose.connect(envConfiguration.mongo_db, {
+  useNewUrlParser: true
+});
 
 // load schemas
 const userSchema = require("../db/schemas/user-schema");
