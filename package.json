@@ -1,5 +1,5 @@
 {
-  "name": "vpf",
+  "name": "odontapi",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,8 +15,9 @@
     "@sendgrid/mail": "^6.4.0",
     "body-parser": "^1.18.3",
     "express": "^4.17.1",
+    "jsonwebtoken": "^7.4.0",
     "md5": "^2.2.1",
-    "jsonwebtoken": "^7.4.0"
+    "mongoose": "^5.5.15"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
