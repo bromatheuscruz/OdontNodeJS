@@ -16,3 +16,20 @@ exports.create = async (req, res, next) => {
             });
     }
 }
+
+exports.getAll = async (req, res, next) => {
+    try {
+        const allPacients = await repository.getAll();
+        res.status(200).send({
+            success: true,
+            message: "Success",
+            pacients: allPacients
+        });
+    } catch (err) {
+        res.status(500).send({
+            success: false,
+            message: "Error while getting all pacients",
+            error: err
+        });
+    }
+};

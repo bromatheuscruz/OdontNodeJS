@@ -15,3 +15,20 @@ exports.create = async (req, res) => {
             });
     }
 }
+
+exports.getAll = async (req, res, next) => {
+    try {
+        const allConsultationMarkeds = await repository.getAll();
+        res.status(200).send({
+            success: true,
+            message: "Success",
+            pacients: allConsultationMarkeds
+        });
+    } catch (err) {
+        res.status(500).send({
+            success: false,
+            message: "Error while getting all consultation markeds",
+            error: err
+        });
+    }
+};
