@@ -22,7 +22,7 @@ exports.getAll = async (req, res, next) => {
         res.status(200).send({
             success: true,
             message: "Success",
-            pacients: allConsultationMarkeds
+            consultationMarkeds: allConsultationMarkeds
         });
     } catch (err) {
         res.status(500).send({
