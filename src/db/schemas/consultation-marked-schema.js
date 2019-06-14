@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema
 
-const ConsultantMarked = new Schema({
+const ConsultantionMarked = new Schema({
     day: {
         type: Date,
         required: true
@@ -24,5 +24,5 @@ const ConsultantMarked = new Schema({
     }
 });
 
-module.exports = mongoose.model("ConsultationMarked", ConsultantMarked);
+module.exports = mongoose.model("ConsultationMarked", ConsultantionMarked);
 

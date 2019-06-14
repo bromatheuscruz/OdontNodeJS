@@ -1,16 +1,16 @@
 const repository = require("../repositories/consultation-marked-repository");
 
 exports.create = async (req, res) => {
-    const { consultantMarked } = req.body;
+    const { consultationMarked } = req.body;
     try {
-        await repository.create(consultantMarked);
-        res.status(201);
+        await repository.create(consultationMarked);
+        res.status(201).send();
     } catch (err) {
         res
             .status(401)
             .send({
                 success: false,
-                message: "Consultant marked not created",
+                message: "Consultantion marked not created",
                 error: err
             });
     }

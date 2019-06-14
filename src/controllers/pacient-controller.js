@@ -5,7 +5,7 @@ exports.create = async (req, res, next) => {
 
     try {
         await repository.create(pacient);
-        res.status(201);
+        res.status(201).send();
     } catch (err) {
         res
             .status(201)

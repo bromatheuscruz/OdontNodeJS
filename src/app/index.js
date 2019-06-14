@@ -43,7 +43,7 @@ app.use("/api/rest/users", userRoute);
 app.use("/api/rest/auth", authRoute);
 app.use("/api/rest/pacients", pacientRoute);
 app.use("/api/rest/doctors", doctorRoute);
-app.use("/api/res/consultation-marked", consultationMarkedRoute);
+app.use("/api/rest/consultation-markeds", consultationMarkedRoute);
 app.use("/pages", pageRoute);
 
 module.exports = app;
