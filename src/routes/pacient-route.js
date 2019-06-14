@@ -1,12 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const controller = require("../controllers/pacient-controller");
 
-router.post("/", (req, res, next) => {
-    res
-        .status(201)
-        .send({
-            "pacientCreated": "true"
-        });
-});
+router.post("/", controller.create);
 
 module.exports = router;

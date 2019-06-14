@@ -1,12 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const controller = require("../controllers/doctor-controller");
 
-router.post("/", (req, res) => {
-    res
-        .status(201)
-        .send({
-            "doctorCreated": "true"
-        });
-});
+router.post("/", controller.create);
 
 module.exports = router;
