@@ -30,16 +30,20 @@ mongoose.connect(envConfiguration.mongo_db, {
   useNewUrlParser: true
 });
 
-// load schemas
-const userSchema = require("../db/schemas/user-schema");
+require("../db/schemas");
 
-// load routes
 const userRoute = require("../routes/user-route");
 const pageRoute = require("../routes/pages-route");
 const authRoute = require("../routes/auth-route");
+const pacientRoute = require("../routes/pacient-route");
+const doctorRoute = require(",,/routes/doctor-route");
+const consultationMarkedRoute = require("../routes/consultatio-marked-route");
 
-app.use("/api/rest", userRoute);
+app.use("/api/rest/users", userRoute);
+app.use("/api/rest/auth", authRoute);
+app.use("/api/rest/pacients", pacientRoute);
+app.use("/api/rest/doctors", doctorRoute);
+app.use("/api/res/consultation-marked", consultationMarkedRoute);
 app.use("/pages", pageRoute);
-app.use("/api/rest", authRoute)
 
 module.exports = app;
