@@ -1,5 +1,5 @@
-require("./consultation-marked-schema")
+require("./consultation-marked-schema");
 require("./user-schema");
 require("./pacient-schema");
 require("./user-schema");
-require("./doctor-schema")
+require("./doctor-schema");
