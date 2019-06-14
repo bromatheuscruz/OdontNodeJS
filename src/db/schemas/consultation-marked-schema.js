@@ -11,7 +11,7 @@ const ConsultantMarked = new Schema({
         ref: "Doctor"
     },
     pacient: {
-        type: mongoo.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Pacient"
     },
     description: {
@@ -24,5 +24,5 @@ const ConsultantMarked = new Schema({
     }
 });
 
-module.exports = mongoose.model("ConsultantMarked", ConsultantMarked);
+module.exports = mongoose.model("ConsultationMarked", ConsultantMarked);
 

@@ -36,8 +36,8 @@ const userRoute = require("../routes/user-route");
 const pageRoute = require("../routes/pages-route");
 const authRoute = require("../routes/auth-route");
 const pacientRoute = require("../routes/pacient-route");
-const doctorRoute = require(",,/routes/doctor-route");
-const consultationMarkedRoute = require("../routes/consultatio-marked-route");
+const doctorRoute = require("../routes/doctor-route");
+const consultationMarkedRoute = require("../routes/consultation-marked-route");
 
 app.use("/api/rest/users", userRoute);
 app.use("/api/rest/auth", authRoute);
