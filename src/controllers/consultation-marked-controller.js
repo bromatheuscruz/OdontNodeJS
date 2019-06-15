@@ -1,4 +1,5 @@
 const repository = require("../repositories/consultation-marked-repository");
+const moment = require("moment");
 
 exports.create = async (req, res) => {
   const { consultationMarked } = req.body;
@@ -39,7 +40,14 @@ exports.getByPacientId = async (req, res, next) => {
     res.status(200).send({
       success: true,
       message: "Success",
-      data: consultationMarkeds
+      data: consultationMarkeds.map(consultationMarked => {
+        return {
+          ...consultationMarked,
+          id: consultationMarked._id,
+          hour: moment(consultationMarked.day).format("hh:mm:ss"),
+          day: moment(consultationMarked.day).format("dd/mm/yyyy")
+        };
+      })
     });
   } catch (err) {
     res.status(500).send({
