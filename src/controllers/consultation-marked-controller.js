@@ -39,7 +39,7 @@ exports.getByPacientId = async (req, res, next) => {
     res.status(200).send({
       success: true,
       message: "Success",
-      consultationMarkeds
+      data: consultationMarkeds
     });
   } catch (err) {
     res.status(500).send({
