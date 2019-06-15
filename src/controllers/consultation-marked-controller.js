@@ -21,7 +21,7 @@ exports.getAll = async (req, res, next) => {
     res.status(200).send({
       success: true,
       message: "Success",
-      consultationMarkeds: allConsultationMarkeds
+      data: allConsultationMarkeds
     });
   } catch (err) {
     res.status(500).send({
@@ -36,18 +36,14 @@ exports.getByPacientId = async (req, res, next) => {
   const { id } = req.params;
 
   try {
-    const consultationMarkeds = await repository.getByPacientId(id);
+    let consultationMarkeds = await repository.getByPacientId(id);
+    consultationMarkeds = consultationMarkeds.map(
+      mapConsultationMarkedResponse
+    );
     res.status(200).send({
       success: true,
       message: "Success",
-      data: consultationMarkeds.map(consultationMarked => {
-        return {
-          ...consultationMarked,
-          id: consultationMarked._id,
-          hour: moment(consultationMarked.day).format("hh:mm:ss"),
-          day: moment(consultationMarked.day).format("dd/mm/yyyy")
-        };
-      })
+      data: consultationMarkeds
     });
   } catch (err) {
     res.status(500).send({
@@ -57,3 +53,13 @@ exports.getByPacientId = async (req, res, next) => {
     });
   }
 };
+
+const mapConsultationMarkedResponse = c => ({
+  id: c._id,
+  day: moment(c.day).format("DD/MM/YYYY"),
+  hour: moment(c.day).format("hh:mm:ss A"),
+  doctor: c.doctor,
+  pacient: c.pacient,
+  description: c.description,
+  type: c.type
+});
