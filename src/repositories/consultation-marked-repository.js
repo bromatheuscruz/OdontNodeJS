@@ -38,7 +38,7 @@ exports.getByPacientId = async id => {
       $unwind: "$doctor"
     },
     {
-      $unwind: "pacient"
+      $unwind: "$pacient"
     }
   ]);
 
