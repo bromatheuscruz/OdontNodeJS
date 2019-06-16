@@ -27,7 +27,8 @@ const ConsultantionMarked = new Schema({
   },
   status: {
     type: String,
-    enum: ["FINISHED", "SCHEDULE", "MISSED"]
+    enum: ["FINISHED", "SCHEDULE", "MISSED"],
+    default: "SCHEDULE"
   }
 });
 
