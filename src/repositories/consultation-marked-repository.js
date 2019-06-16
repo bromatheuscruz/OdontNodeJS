@@ -33,6 +33,12 @@ exports.getByPacientId = async id => {
         foreignField: "_id",
         as: "pacient"
       }
+    },
+    {
+      $unwind: "$doctor"
+    },
+    {
+      $unwind: "pacient"
     }
   ]);
 
