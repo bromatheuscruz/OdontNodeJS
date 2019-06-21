@@ -8,7 +8,13 @@ const app = function lazyLoad() {
 const Pacient = require("../../src/db/schemas/pacient-schema");
 const mockCorrectPacient = {
   name: "Matheus Henrique Penultimonome Ultimonome",
-  momName: "Agostina da Silva Peniltimonome Ultimonome"
+  momName: "Agostina da Silva Peniltimonome Ultimonome",
+  address: {
+    district: "Centro",
+    city: "Rio de Janeiro",
+    state: "RJ",
+    CEP: "20030-050"
+  }
 };
 describe("Create Pacient Suite", async () => {
   let mongoServer;

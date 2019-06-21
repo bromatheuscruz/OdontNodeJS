@@ -1,4 +1,3 @@
-const dotenv = require("../config/dotenv");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -23,7 +22,7 @@ app.use((req, res, next) => {
 });
 
 // connect to mongodb
-mongoose.connect(dotenv.mongoDBUri, {
+mongoose.connect(process.env.MONGO_DB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true
 });
