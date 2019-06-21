@@ -8,7 +8,6 @@ describe("Authentication", () => {
   let connection, db;
 
   beforeAll(async () => {
-    console.log(process.env.NODE_ENV);
     connection = await MongoClient.connect(config.mongo_db, {
       useNewUrlParser: true
     });
