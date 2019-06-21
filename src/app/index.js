@@ -1,11 +1,8 @@
-require("../config");
+const dotenv = require("../config/dotenv");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const envJson = require("../../env.json");
-const currentEnv = process.env.NODE_ENV;
-const envConfiguration = envJson[currentEnv];
 
 app.use(
   bodyParser.json({
@@ -26,8 +23,9 @@ app.use((req, res, next) => {
 });
 
 // connect to mongodb
-mongoose.connect(envConfiguration.mongo_db, {
-  useNewUrlParser: true
+mongoose.connect(dotenv.mongoDBUri, {
+  useNewUrlParser: true,
+  useCreateIndex: true
 });
 
 require("../db/schemas");
