@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_ENV=test DATABASE_NAME=odont_db_test jest",
     "start": "node src/bin/server.js",
-    "dev": "nodemon src/bin/server.js --ignore __tests__"
+    "dev": "NODE_ENV=development nodemon src/bin/server.js --ignore __tests__"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +21,10 @@
     "mongoose": "^5.6.0"
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^1.0.1",
     "jest": "^24.8.0",
-    "nodemon": "^1.19.1"
+    "mongodb": "^3.2.7",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }

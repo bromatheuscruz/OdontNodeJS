@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const envJson = require("../../env.json");
-const currentEnv = process.env.NODE_ENV || "development";
+const currentEnv = process.env.NODE_ENV;
 const envConfiguration = envJson[currentEnv];
 
 app.use(
