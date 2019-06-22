@@ -1,15 +1,22 @@
 const repository = require("../repositories/user-repository");
-const validator = require("../validators/contract-validator");
+const Validator = require("../validators/contract-validator");
 const encryptService = require("../services/encrypt-service");
 
 exports.create = async (req, res, next) => {
   const newUser = req.body;
+  const validator = new Validator();
 
+  validator.isRequired(newUser.email, "Email is required");
+  validator.isRequired(newUser.password, "Password is required");
   validator.isEmail(newUser.email, "Invalid email");
-  validator.hasMinLen(newUser.password, 6, "Password is required");
+  validator.hasMinLen(
+    newUser.password,
+    6,
+    "Password must contain at least six characters"
+  );
 
   if (!validator.isValid()) {
-    res.status(403).send({
+    return res.status(403).send({
       success: false,
       error: "New user is invalid",
       errors: validator.errors()
