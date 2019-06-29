@@ -2,10 +2,12 @@ const repository = require("../repositories/pacient-repository");
 
 exports.create = async (req, res, next) => {
   const { pacient } = req.body;
-
   try {
     await repository.create(pacient);
-    res.status(201).send();
+    res.status(201).send({
+      success: true,
+      message: "Pacient created"
+    });
   } catch (err) {
     res.status(201).send({
       success: false,
