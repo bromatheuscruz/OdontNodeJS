@@ -10,3 +10,11 @@ exports.getAll = async () => {
     const allPacients = await Pacient.find({});
     return allPacients;
 }
+
+exports.findByDocuments = async ({ rg, cpf}) => {
+    const pacient = await Pacient.findOne({
+        rg,
+        cpf
+    });
+    return pacient;
+}

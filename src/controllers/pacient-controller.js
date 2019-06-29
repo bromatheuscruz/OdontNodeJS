@@ -3,6 +3,15 @@ const repository = require("../repositories/pacient-repository");
 exports.create = async (req, res, next) => {
   const { pacient } = req.body;
   try {
+    const existentPacient = await repository.findByDocuments({ rg: pacient.rg, cpf: pacient.cpf });
+    
+    if (existentPacient) {
+      res.status(403).send({
+        success: false,
+        message: "Documento já cadastrado. (CPF ou RG)"
+      });
+    }
+
     await repository.create(pacient);
     res.status(201).send({
       success: true,
