@@ -5,6 +5,7 @@ function ValidationContract() {
 }
 
 ValidationContract.prototype.isRequired = (value, message) => {
+  console.log(value);
   if (!value || value.length < 0) errors.push({ message: message });
 };
 
@@ -22,7 +23,7 @@ ValidationContract.prototype.isFixedLen = (value, len, message) => {
 
 ValidationContract.prototype.isEmail = (value, message) => {
   var reg = new RegExp(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
-  if (!reg.test(value)) errors.push({ message: message });
+  if (!value || !reg.test(value)) errors.push({ message: message });
 };
 
 ValidationContract.prototype.errors = () => {
@@ -37,4 +38,4 @@ ValidationContract.prototype.isValid = () => {
   return errors.length == 0;
 };
 
-module.exports = new ValidationContract();
+module.exports = ValidationContract;

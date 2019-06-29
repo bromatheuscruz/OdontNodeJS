@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/bin/server.js",
-    "dev": "nodemon src/bin/server.js"
+    "dev": "NODE_ENV=development nodemon src/bin/server.js --ignore __tests__",
+    "test": "NODE_ENV=test jest"
   },
   "keywords": [],
   "author": "",
@@ -18,9 +18,14 @@
     "jsonwebtoken": "^7.4.0",
     "md5": "^2.2.1",
     "moment": "^2.24.0",
-    "mongoose": "^5.6.0"
+    "mongoose": "^5.6.0",
+    "dotenv": "^8.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "@shelf/jest-mongodb": "^1.0.1",
+    "jest": "^24.8.0",
+    "mongodb-memory-server": "^4.2.1",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }

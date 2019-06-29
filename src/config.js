@@ -1,1 +1,0 @@
-global.SALT_KEY = "m_y_s_e_c_r_e_t_s_a_l_t_k_e_y_h_e_r_e";
